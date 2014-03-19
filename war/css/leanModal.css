@@ -1,0 +1,87 @@
+@CHARSET "ISO-8859-1";
+
+#lean_overlay {
+    position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+    display: none;
+}
+
+#popup{
+	display: none;
+	background: white;
+	width: 80%;
+	border:3px solid;
+	overflow: hidden;
+}
+
+#popup2{
+	display: none;
+	background: white;
+	width: 30%;
+	height: 130px;
+	border:1px solid;
+	overflow: hidden;
+}
+
+#popup3{
+	display: none;
+	background: white;
+	width: 70%;
+	border:3px solid;
+	overflow: hidden;
+	height: 500px;
+	margin-top: -90px;
+	padding: 5px;
+}
+
+#cspmodal {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+	height: 50px;
+	font-size: 16px;
+	font-weight: bolder;
+	text-align: center;
+}
+#modalbuttondiv {
+	width: 50%;
+	height: 35px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 10px;
+}
+
+#leftcol{
+	width: 48%;
+	float: left;
+}
+
+.imgcol{
+	width: 100%;
+	height: auto;
+	overflow: hidden;
+}
+
+#rightcol{
+	width: 49%;
+	height: 100%;
+	float: right;
+	text-align:justify;
+	font-family: Tahoma, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: normal;
+	padding:10px 10px;
+}
+
+#rightcol h1{
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 1.8;
+}
