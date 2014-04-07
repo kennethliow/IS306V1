@@ -79,8 +79,9 @@
 				"bPaginate": false,
 				"bScrollCollapse": true
 			} );
+			showSuccessToast("A New Calendar Functionality To View CSPs Is Installed In The Left Panel");
 			
-			//TOOLTIP
+			
 			//Select all anchor tag with rel set to tooltip
 			$('.viewcal').mouseover(function(e) {
 				
@@ -140,7 +141,7 @@
 			});
 			
 			// MINI CALENDENDAR RENDERING
-    		    $('#minicalendar').fullCalendar({
+   		    $('#minicalendar').fullCalendar({
 		        theme: true,
 		        header: {
 		            left: 'prev,today,next',
@@ -153,23 +154,34 @@
 		            }
 		        },
 		        events: [
-	            {
-		            title: '',
-		            start: new Date(y, m, d-12, 12, 0),
-		            end: new Date(y, m, d-11, 14, 0),
-		            allDay: false},
-		        {
-		            title: '',
-		            start: new Date(y, m, d + 1, 19, 0),
-		            end: new Date(y, m, d + 5, 22, 30),
-		            allDay: false},
-		        {
-		            title: '',
-		            start: new Date(y, m, 25),
-		            end: new Date(y, m+1, 2)
-				}
-		        ]
+		 				{
+		 		            title: 'SMU Project Bethelehem 2014',
+		 		            start: new Date(y, 4, 8, 12, 0),
+		 		            end: new Date(y, 4, 22, 14, 0)},
+		 		        {
+		 		            title: 'SMU Challenge 2014',
+		 		            start: new Date(y, 4, 10, 19, 0),
+		 		            end: new Date(y, 4, 26, 22, 30)},
+		 	            {
+		 		            title: 'National Youth Envirolympics Challenge 2014',
+		 		            start: new Date(y, 4, 10, 19, 0),
+		 		            end: new Date(y, 4, 22, 22, 30)
+		 				}
+		 			]
 		    });
+			
+			var $el = $(".highlight"),
+		    x = 5000,
+		    originalColor = $el.css("border-color");
+			
+			
+				$el.css({"border-color": "#ff3939"});
+			
+			setTimeout(function(){
+				$el.fadeTo('slow', 0.2, function(){
+					$el.css({"border-color": "white"});
+				}).fadeTo('slow', 1);
+			}, x);
 		});
 		$('#table2').dataTable( {
 			"sScrollY": "200px",
@@ -185,6 +197,9 @@
 		$(document).on('click', "#viewbigcal", function () {
 			$('#manualclick').trigger('click');
 			$('a[rel*=leanModal]').leanModal({ top : 150, closeButton: ".modal_close" });
+			
+			$.get('clicked',{clicked: 'true'},function(responseText) {});
+			
 			return false;
 		});
 		$(document).on('click', ".seecal", function () {
@@ -209,9 +224,13 @@
 		$(document).on('click', ".details", function () {
 			event.preventDefault();
 			var id = $(this).attr('id');
-			if(id=="smuchallenge"){
+			if(id=="nyec"){
 				window.location.href = "./cspdetails.jsp";
-			} else{
+			} else if(id=="bethelehem"){
+				window.location.href = "./cspdetailsbethelehem.jsp";
+			} else if(id=="smuchallenge"){
+				window.location.href = "./cspdetailschallenge.jsp";
+			}else{
 				window.location.href = "./uncompleted.jsp";
 			}
 		});
@@ -284,11 +303,13 @@
 					<br />
 					<hr>
 					<br />
-					<div id='minicalendar'></div>
+					<div class="highlight" style="height: 240px; width: 95%; border-width: 3px; border-style: solid">
+					<div id='minicalendar' style="width: 90%; float: center;"></div>
 					
-					<div style="float: left; width: 90%; text-align: center; margin-top: 10px;">
+					<div style="center: left; width: 100%; text-align: center; margin-top: 10px;">
 						<br />
-						<a href="" id="viewbigcal" class="btn-custom btn-large" style="margin-left: auto; margin-right: auto;"> My CSP Calendar </a>
+						<a href="" id="viewbigcal" class="btn-custom btn-large" style="float: center"> View CSP Calendar </a>
+					</div>
 					</div>
 				</div>
 				<div id="maincontent">
@@ -542,71 +563,43 @@
 								<div class="listitem">
 									<div class="leftitem">
 										<span class="item-name">National Youth Envirolympics Challenge 2014</span>
-										<span class="viewcal" style="font-weight: bolder; float: right;"><a class="seecal" href="#popup3">31 Mar '14 - 4 Apr ' 14</a></span><br />
+										<span class="viewcal" style="font-weight: bolder; float: right;"><a class="seecal" href="#popup3">10 May '14 - 22 May ' 14</a></span><br />
 										<div style="text-align: justify"><span class="item-description">2014 will be the second year that SMU will be partnering the Lions Befrienders Service Association (LBSA); National Youth Envirolympics Challenge 2014 will be raising funds and necessities, and showing care and love to the seniors at LBSA Mei Ling Street Seniors Activity Centre (SAC). Join us this summer where we'll have fun interaction sessions and challenging fund raisers starting from June!</span></div>
-										<span class="item-deadline">Application Deadline: 04 Mar '14 </span>
+										<span class="item-deadline">Application Deadline: 31 Apr '14 </span>
 									</div>
 									<div class="rightitem">
 										<a href="" id="1" class="btn-green btn-large apply" style="float: right;padding: 8px 25px 8px; margin-left: 5px; background-image: linear-gradient(#45d122, #176110);"> Apply </a>
+										<a href="" id="nyec" class="btn-custom btn-large details" style="float: right;padding: 8px 25px 8px;"> Details </a>
+									</div>
+								</div>
+								<div class="listitem"><br /><hr><br /></div>
+								<div class="listitem">
+									<div class="leftitem">
+										<span class="item-name">SMU Challenge 2014</span> 
+										<span class="viewcal" style="font-weight: bolder; float: right;"><a class="seecal" href="#popup3">10 May '14 - 26 May '14</a></span> 
+										<br />
+										<div style="text-align: justify"><span class="item-description">Only selected participants may apply. Email project leader (rachelang.2013@socsc.smu.edu.sg) to indicate your interest before applying here. SMU Challenge 2014's partner organisation is Educational Life International Cambodia (ELIC), based in Phnom Penh. ELIC's primary goal is<a href="">...</a></span></div>
+										<span class="item-deadline">Application Deadline: 31 Apr '14 </span>
+									</div>
+									<div class="rightitem">
+										<a href="" id="2" class="btn-green btn-large apply" style="float: right;padding: 8px 25px 8px; margin-left: 5px; background-image: linear-gradient(#45d122, #176110);"> Apply </a>
 										<a href="" id="smuchallenge" class="btn-custom btn-large details" style="float: right;padding: 8px 25px 8px;"> Details </a>
 									</div>
 								</div>
 								<div class="listitem"><br /><hr><br /></div>
 								<div class="listitem">
 									<div class="leftitem">
-										<span class="item-name">Project Phoa II (Cambodia)</span> 
-										<span class="viewcal" style="font-weight: bolder; float: right;"><a class="seecal" href="#popup3">21 Mar '14 - 05 Apr ' 14</a></span> 
+										<span class="item-name">SMU Project Bethelehem 2014</span> 
+										<span class="viewcal" style="font-weight: bolder; float: right;"><a class="seecal" href="#popup3">8 May '14 - 22 May ' 14</a></span> 
 										<br />
-										<div style="text-align: justify"><span class="item-description">Only selected participants may apply. Email project leader (rachelang.2013@socsc.smu.edu.sg) to indicate your interest before applying here. Project Phoa II's partner organisation is Educational Life International Cambodia (ELIC), based in Phnom Penh. ELIC's primary goal is<a href="">...</a></span></div>
-										<span class="item-deadline">Application Deadline: 23 Mar '14 </span>
+										<div style="text-align: justify"><span class="item-description">The Bethlehem Project works with businesses to assist their eligible immigrant employees with the citizenship process so they become full participants in the workplace, community, and economy.</span></div>
+										<span class="item-deadline">Application Deadline: 30 Apr '14 </span>
 									</div>
 									<div class="rightitem">
 										<a href="" id="2" class="btn-green btn-large apply" style="float: right;padding: 8px 25px 8px; margin-left: 5px; background-image: linear-gradient(#45d122, #176110);"> Apply </a>
-										<a href="" id="" class="btn-custom btn-large details" style="float: right;padding: 8px 25px 8px;"> Details </a>
+										<a href="" id="bethelehem" class="btn-custom btn-large details" style="float: right;padding: 8px 25px 8px;"> Details </a>
 									</div>
-								</div>
-								<div class="listitem"><br /><hr><br /></div>
-								<div class="listitem">
-									<div class="leftitem">
-										<span class="item-name">SMU PAW Summer Shelter visit</span>
-										<span class="viewcal" style="font-weight: bolder; float: right;"><a class="seecal" href="#popup3">31 Mar '14 - 01 Apr ' 14</a></span>
-										<br />
-										<div style="text-align: justify"><span class="item-description">Animal Shelter Visits Details There are 8 sessions available for sign-up with each session being able to accommodate a maximum of 5 people. Slots are awarded on a first-come-first-serve basis. To obtain CSP hours for<a href="">...</a></span></div>
-										<span class="item-deadline">Application Deadline: 12 Apr '14 </span>
-									</div>
-									<div class="rightitem">
-										<a href="" id="3" class="btn-green btn-large apply" style="float: right;padding: 8px 25px 8px; margin-left: 5px; background-image: linear-gradient(#45d122, #176110);"> Apply </a>
-										<a href="" id="" class="btn-custom btn-large details" style="float: right;padding: 8px 25px 8px;"> Details </a>
-									</div>
-								</div>
-								<div class="listitem"><br /><hr><br /></div>
-								<div class="listitem">
-									<div class="leftitem">
-										<span class="item-name">Project Agape: Tashkurgan IV (China)</span>
-										<span class="viewcal" style="font-weight: bolder; float: right;"><a class="seecal" href="#popup3">02 Mar '14 - 31 Apr ' 14</a></span>
-										<br />
-										<div style="text-align: justify"><span class="item-description">Project Agape: Tashkurgan was founded in 2010, and the first team headed to Tashkurgan in 2011.</span></div>
-										<span class="item-deadline">Application Deadline: 02 Aug '14 </span>
-									</div>
-									<div class="rightitem">
-										<a href="" id="4" class="btn-green btn-large apply" style="float: right;padding: 8px 25px 8px; margin-left: 5px; background-image: linear-gradient(#45d122, #176110);"> Apply </a>
-										<a href="" id="" class="btn-custom btn-large details" style="float: right;padding: 8px 25px 8px;"> Details </a>
-									</div>
-								</div>
-								<div class="listitem"><br /><hr><br /></div>
-								<div class="listitem">
-									<div class="leftitem">
-										<span class="item-name">Project Heart2Heart 5 (Chiang Mai, Thailand)</span>
-										<span class="viewcal" style="font-weight: bolder; float: right;"><a class="seecal" href="#popup3">21 Apr '14 - 25 Apr ' 14</a></span>
-										<br />
-										<div style="text-align: justify"><span class="item-description">his is only for those selected. Project Heart 2 Heart 5 is about promoting and providing basic education for villagers in Chiang Mai, Thailand. All proceeds will go towards the expansion of Good Kids Preschool</span></div>
-										<span class="item-deadline">Application Deadline: 23 Mar '14 </span>
-									</div>
-									<div class="rightitem">
-										<a href="" id="5" class="btn-green btn-large apply" style="float: right;padding: 8px 25px 8px; margin-left: 5px; background-image: linear-gradient(#45d122, #176110);"> Apply </a>
-										<a href="" id="" class="btn-custom btn-large details" style="float: right;padding: 8px 25px 8px;"> Details </a>
-									</div>
-								</div>
+								</div>						
 							</div>
 						</div>
 					</div>

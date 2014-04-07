@@ -16,7 +16,7 @@
 		} else if(username=="alexsim" && password=="alexsim"){
 			window.location.href = "./cfoursr.jsp";
 		} else if((username=="bobkoh" && password=="bobkoh") || (username=="johnson" && password=="johnson")){
-			window.location.href = "./volunteer.jsp";
+			window.location.href = "timing";
 		} else{
 			showErrorToast("Invalid Username/Password");
 		}
@@ -32,7 +32,7 @@
 	} else if (jspName.equals("cfoursr.jsp") || jspName.equals("cfoursrdetails.jsp") || jspName.equals("cfoursrdetailstarring.jsp")){
 		holder="Alex Sim";
 		placetogo = "cfoursr";
-	} else if (jspName.equals("volunteer.jsp") || jspName.equals("cspdetails.jsp") || jspName.equals("cspdetailstarring.jsp")){
+	} else if (jspName.equals("volunteer.jsp") || jspName.equals("cspdetails.jsp") || jspName.equals("cspdetailstarring.jsp")  || jspName.equals("cspdetailschallenge.jsp") || jspName.equals("cspdetailsbethelehem.jsp")){
 		holder="Bob Koh";
 		placetogo = "volunteer";
 	}
@@ -61,7 +61,7 @@
 			</div>
 			<div class="left right">
 				<!-- Login Form -->
-				<form class="clearfix" action="./process_login.php" method="post">
+				<form class="clearfix" method="post">
 					<h1>Members Login</h1>
 					<label class="grey" for="log">Username:</label>
 					<input class="field" type="text" name="log" id="username" value="" size="23" />
@@ -100,7 +100,7 @@
 			</li>
 			<% } else{ %>
 			<li>
-				<a href="./index.jsp">Log Out</a>
+				<a href="endtiming">Log Out</a>
 			</li>
 			<% } %>
 			<li class="right">&nbsp;</li>

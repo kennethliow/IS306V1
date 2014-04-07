@@ -151,7 +151,7 @@
 					
 					<div style="float: left; width: 90%; text-align: center; margin-top: 10px;">
 						<br />
-						<a href="" id="viewbigcal" class="btn-custom btn-large" style="margin-left: auto; margin-right: auto;"> My CSP Calendar </a>
+						<a href="" id="viewbigcal" class="btn-custom btn-large" style="margin-left: auto; margin-right: auto;"> View CSP Calendar </a>
 					</div>
 				</div>
 				<div id="maincontent">

@@ -45,7 +45,6 @@
 	    var y = date.getFullYear();
 	    
 		$(document).ready(function() {
-			$('#doclib').fadeIn();
 			// MINI CALENDENDAR RENDERING
     		    $('#minicalendar').fullCalendar({
 		        theme: true,
@@ -85,7 +84,13 @@
 			return false;
 		});
 		$(document).on('click', "#cfmapprove", function () {
-			event.preventDefault();
+			if($('#cfmapprove').text() != 'Applied - Pending Approval'){
+				$('#manualclick2').trigger('click');
+				$('a[rel*=leanModal]').leanModal({ top : 150, closeButton: ".modal_close" });
+				return false;
+			} else{
+				event.preventDefault();
+			}
 		});
 		$(document).on('click', "#confirm", function () {
 			event.preventDefault();
@@ -153,12 +158,12 @@
 					<br />
 					<div id="top">
 						<div style="float: left;">
-							starringSMU 2014
+							SMU Challenge 2014
 							<br />
-							<span class="top-emp">PAYM (Buona Vista)</span>
+							<span class="top-emp">SMU Challenge Singapore</span>
 						</div>
 						<div style="float: right;">
-							<a href="" id="cfmapprove" class="btn-green btn-large" style="float: right;padding: 8px 45px 8px; margin-left: 5px;  margin-top: 5px; background-image: linear-gradient(#45d122, #176110);"> Applied - Successfully Approved </a>
+							<a href="" id="cfmapprove" class="btn-green btn-large" style="float: right;padding: 8px 45px 8px; margin-left: 5px;  margin-top: 5px; background-image: linear-gradient(#45d122, #176110);"> Apply </a>
 						</div>
 					</div>
 					
@@ -170,7 +175,7 @@
 									Job ID: 
 								</td>
 								<td class="tddes">
-									23103
+									23101
 								</td>
 								<td class="tdtitle">
 									CSP Hours:
@@ -184,13 +189,13 @@
 									Attachment Period: 
 								</td>
 								<td class="tddes">
-									5 Days
+									14 Days
 								</td>
 								<td class="tdtitle">
 									CSP Start Date:
 								</td>
 								<td class="tddes">
-									8 Jun '14
+									10 Jun '14
 								</td>
 							</tr>
 							<tr>
@@ -204,7 +209,7 @@
 									CSP End Date:
 								</td>
 								<td class="tddes">
-									13 Jun '14
+									26 Jun '14
 								</td>
 							</tr>
 							<tr>
@@ -212,7 +217,7 @@
 									Overseas CSP: 
 								</td>
 								<td class="tddes">
-									Yes
+									No
 								</td>
 								<td class="tdtitle">
 									CSP Country:
@@ -226,13 +231,13 @@
 									Contact Person: 
 								</td>
 								<td class="tddes">
-									Ms Puspa
+									Ms Osman
 								</td>
 								<td class="tdtitle">
 									Contact Person No:
 								</td>
 								<td class="tddes">
-									+855 17 914 442
+									+65 3213 3123
 								</td>
 							</tr>
 							<tr>
@@ -255,7 +260,11 @@
 					
 					<div id="bottom">
 						<span style="font-weight: bolder;">CSP Description:</span>
-						<p>2014 will be the second year that SMU will be partnering the Lions Befrienders Service Association (LBSA); National Youth Envirolympics Challenge 2014 will be raising funds and necessities, and showing care and love to the envionment. Join us this summer where we'll have fun interaction sessions and challenging fund raisers starting from June! Contact us today via facebook Messaging, email us at smuchallenge@sa.smu.edu.sg, or visit our web site at <a href="www.smu.edu.sg/smuchallenge!">www.smu.edu.sg/smuchallenge!</a> Interaction sessions are the most meaningful as the volunteers can have better understanding towards the lives of the beneficiary. We will be heading down to the LBSA Senior Activity Centre at Mei Ling Street to interact with our beneficiaries. Fun interactive and mentally challenging games will be conducted to bond volunteers and environment together. This is to foster involvement from volunteers and to let them know who are they helping.</p>
+						<p>SMU Challenge is a signature SMU community outreach event organised by the Special Interest and Community Service Sodality (SICS). Here at SMU, we believe in walking the talk. SMU's students, staff, faculty and alumni worked together as a university to give back to society.
+
+Since its initiation in 2008, SMU Challenge has reached out to a variety of beneficiaries including Muscular Dystrophy Association (Singapore), Geylang East Home for the Aged, Society of Moral Charities and most recently, Lions Befrienders Service Association.
+
+SMU Challenge follows the model of Understanding, Empowering and Inspiring to guide its three main activities – interaction, fundraising and finale events. Volunteers take part in interaction sessions with the beneficiary to provide the personal touch; being on the ground helps them to understand societal needs, hence empowering them in their quest to garner support for the beneficiary.</p>
 						<hr>
 					</div>
 					<div id="doclib">

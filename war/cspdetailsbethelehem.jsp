@@ -45,7 +45,6 @@
 	    var y = date.getFullYear();
 	    
 		$(document).ready(function() {
-			$('#doclib').fadeIn();
 			// MINI CALENDENDAR RENDERING
     		    $('#minicalendar').fullCalendar({
 		        theme: true,
@@ -85,7 +84,13 @@
 			return false;
 		});
 		$(document).on('click', "#cfmapprove", function () {
-			event.preventDefault();
+			if($('#cfmapprove').text() != 'Applied - Pending Approval'){
+				$('#manualclick2').trigger('click');
+				$('a[rel*=leanModal]').leanModal({ top : 150, closeButton: ".modal_close" });
+				return false;
+			} else{
+				event.preventDefault();
+			}
 		});
 		$(document).on('click', "#confirm", function () {
 			event.preventDefault();
@@ -153,12 +158,12 @@
 					<br />
 					<div id="top">
 						<div style="float: left;">
-							starringSMU 2014
+							SMU Project Bethelehem 2014
 							<br />
-							<span class="top-emp">PAYM (Buona Vista)</span>
+							<span class="top-emp">SMU Special Interest & Community Service Sodality (SICS)</span>
 						</div>
 						<div style="float: right;">
-							<a href="" id="cfmapprove" class="btn-green btn-large" style="float: right;padding: 8px 45px 8px; margin-left: 5px;  margin-top: 5px; background-image: linear-gradient(#45d122, #176110);"> Applied - Successfully Approved </a>
+							<a href="" id="cfmapprove" class="btn-green btn-large" style="float: right;padding: 8px 45px 8px; margin-left: 5px;  margin-top: 5px; background-image: linear-gradient(#45d122, #176110);"> Apply </a>
 						</div>
 					</div>
 					
@@ -170,7 +175,7 @@
 									Job ID: 
 								</td>
 								<td class="tddes">
-									23103
+									23123
 								</td>
 								<td class="tdtitle">
 									CSP Hours:
@@ -184,7 +189,7 @@
 									Attachment Period: 
 								</td>
 								<td class="tddes">
-									5 Days
+									14 Days
 								</td>
 								<td class="tdtitle">
 									CSP Start Date:
@@ -204,7 +209,7 @@
 									CSP End Date:
 								</td>
 								<td class="tddes">
-									13 Jun '14
+									22 Jun '14
 								</td>
 							</tr>
 							<tr>
@@ -218,7 +223,7 @@
 									CSP Country:
 								</td>
 								<td class="tddes">
-									Singapore
+									Bethelehem
 								</td>
 							</tr>
 							<tr>
@@ -240,13 +245,13 @@
 									Flight Arranged By: 
 								</td>
 								<td class="tddes">
-									N/A
+									Student
 								</td>
 								<td class="tdtitle">
 									Airport Pickup:
 								</td>
 								<td class="tddes">
-									N/A
+									TBC
 								</td>
 							</tr>
 						</table>
@@ -255,7 +260,7 @@
 					
 					<div id="bottom">
 						<span style="font-weight: bolder;">CSP Description:</span>
-						<p>2014 will be the second year that SMU will be partnering the Lions Befrienders Service Association (LBSA); National Youth Envirolympics Challenge 2014 will be raising funds and necessities, and showing care and love to the envionment. Join us this summer where we'll have fun interaction sessions and challenging fund raisers starting from June! Contact us today via facebook Messaging, email us at smuchallenge@sa.smu.edu.sg, or visit our web site at <a href="www.smu.edu.sg/smuchallenge!">www.smu.edu.sg/smuchallenge!</a> Interaction sessions are the most meaningful as the volunteers can have better understanding towards the lives of the beneficiary. We will be heading down to the LBSA Senior Activity Centre at Mei Ling Street to interact with our beneficiaries. Fun interactive and mentally challenging games will be conducted to bond volunteers and environment together. This is to foster involvement from volunteers and to let them know who are they helping.</p>
+						<p>The Bethlehem Project works with businesses to assist their eligible immigrant employees with the citizenship process so they become full participants in the workplace, community, and economy.The Hebrew Bible identifies Bethlehem as the city of David. The New Testament identifies Bethlehem as the birthplace of Jesus. The town is inhabited by one of the oldest Christian communities in the world, although the size of the community has shrunk due to emigration. Bethlehem was sacked by the Samaritans in 529, but rebuilt by the Byzantine emperor Justinian I. Bethlehem was conquered by the Arab Caliphate of 'Umar ibn al-Khattāb in 637, who guaranteed safety for the city's religious shrines. In 1099, Crusaders captured and fortified Bethlehem and replaced its Greek Orthodox clergy with a Latin one. The Latin clergy were expelled after the city was captured by Saladin, the sultan of Egypt and Syria. With the coming of the Mamluks in 1250, the city's walls were demolished, and were subsequently rebuilt during the rule of the Ottoman Empire.</p>
 						<hr>
 					</div>
 					<div id="doclib">

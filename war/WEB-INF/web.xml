@@ -12,4 +12,30 @@
   <servlet-name>SystemServiceServlet</servlet-name>
   <url-pattern>/_ah/spi/*</url-pattern>
  </servlet-mapping>
+ 	<servlet>
+        <servlet-name>timing</servlet-name>
+        <servlet-class>com.controller.addTiming</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>timing</servlet-name>
+        <url-pattern>/timing</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>endtiming</servlet-name>
+        <servlet-class>com.controller.endTiming</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>endtiming</servlet-name>
+        <url-pattern>/endtiming</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>clicked</servlet-name>
+        <servlet-class>com.controller.clicked</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>clicked</servlet-name>
+        <url-pattern>/clicked</url-pattern>
+    </servlet-mapping>
 </web-app>

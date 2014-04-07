@@ -43,7 +43,7 @@
 	var date = new Date();
     var d = date.getDate();
     var m = date.getMonth();
-    var y = date.getFullYear();
+    var y = 2014;
 	$(document).ready(function() {
 		$('#calendar').fullCalendar({
 			header: {
@@ -55,23 +55,28 @@
 			editable: false,
 			events: [
 				{
-		            title: 'Project Phoa II (Cambodia)',
-		            start: new Date(y, m, d-12, 12, 0),
-		            end: new Date(y, m, d-6, 14, 0)},
+		            title: 'SMU Project Bethelehem 2014',
+		            start: new Date(y, 4, 8, 12, 0),
+		            end: new Date(y, 4, 22, 14, 0)},
 		        {
 		            title: 'SMU Challenge 2014',
-		            start: new Date(y, m, d + 1, 19, 0),
-		            end: new Date(y, m, d + 5, 22, 30)},
+		            start: new Date(y, 4, 10, 19, 0),
+		            end: new Date(y, 4, 26, 22, 30)},
 	            {
 		            title: 'National Youth Envirolympics Challenge 2014',
-		            start: new Date(2014, 2, 31, 19, 0),
-		            end: new Date(2014, 3, 4, 22, 30)},
-		        {
-		            title: 'Project Xinyuan',
-		            start: new Date(y, m, 25),
-		            end: new Date(y, m+1, 2),
+		            start: new Date(y, 4, 10, 19, 0),
+		            end: new Date(y, 4, 22, 22, 30)
 				}
-			]
+			],
+			eventClick: function(calEvent, jsEvent, view) {
+				if(calEvent.title=="National Youth Envirolympics Challenge 2014") {
+					window.location = "calnyec.jsp";
+				} else if(calEvent.title=="SMU Challenge 2014") {
+					window.location = "calsmuchallenge.jsp";
+				} else if(calEvent.title=="SMU Project Bethelehem 2014") {
+					window.location = "calbethelehem.jsp";
+				}
+		    }
 		});
 	});
 	
