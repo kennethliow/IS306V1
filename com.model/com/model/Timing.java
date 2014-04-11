@@ -71,15 +71,4 @@ public class Timing implements Serializable {
 	public void setTimeTaken(String timeTaken) {
 		this.timeTaken = timeTaken;
 	}
-
-	public boolean equals(Object obj) {
-		if (obj instanceof Timing) {
-			Timing timing = (Timing) obj;
-			if (id == timing.getId()) {
-				return true;
-			}
-		}
-		return false;
-	}
-
 }

@@ -297,18 +297,6 @@
 	</div>
 	<%@include file="./footer.jsp"%>
 	
-	<div id="shout_box">
-		<div class="cheader toggleclick">
-			<img class="onlinedot" src="./img/dot.png" alt="Online" width="7" height="7">
-			&nbsp;NYEC 2014 Approval 
-			<div class="open_btn">&nbsp;</div>
-		</div>
-		<div class="toggle_chat">
-			<iframe width="100%" height="100%" frameborder="0" src="http://www.smusmif.com/own/index.php?user=cfoursr"></iframe>
-		</div>
-	</div>
-	
-	
 	<a rel="leanModal" name="popup" href="#popup3" id="manualclick"></a> 
 	<div id="popup3">
 		<iframe width="100%" height="100%" frameborder="0" src="./calendar.jsp"></iframe>

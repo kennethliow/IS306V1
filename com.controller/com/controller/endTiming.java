@@ -22,34 +22,37 @@ public class endTiming extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        Calendar cal = Calendar.getInstance();
-    	cal.getTime();
-    	cal.add(Calendar.HOUR_OF_DAY, 8);
-    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-    	String endtime = sdf.format(cal.getTime());
-    	long thisID = (long)request.getSession().getAttribute("id");
-    	
-    	Timing thisTiming = TimingDAO.retrieve(thisID);
-    	String starttime = thisTiming.getStarttime();
-    	String difference = "";
-    	try{
-	    	Date start = sdf.parse(starttime);
-	    	Date end = sdf.parse(endtime);
+        try{
+        	HttpSession thisSession = request.getSession();
+        	long thisID = (long)thisSession.getAttribute("id");
+	        Calendar cal = Calendar.getInstance();
+	    	cal.getTime();
+	    	cal.add(Calendar.HOUR_OF_DAY, 8);
+	    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+	    	String endtime = sdf.format(cal.getTime());
 	    	
-	    	long diff = end.getTime() - start.getTime();
-	    	long diffSeconds = diff / 1000 % 60;
-			long diffMinutes = diff / (60 * 1000) % 60;
-			long diffHours = diff / (60 * 60 * 1000) % 24;
-			difference = diffHours + " Hours, " + diffMinutes + "Mins, " + diffSeconds + "Secs"; 
-			
-    	} catch(Exception ex){
-    		ex.printStackTrace();
-    	}
-    	thisTiming.setEndtime(endtime);
-    	thisTiming.setTimeTaken(difference);
-    	TimingDAO.update(thisTiming);
-    	
-    	RequestDispatcher dispatcher = request.getRequestDispatcher("./index.jsp"); 
+	    	
+	    	Timing thisTiming = TimingDAO.retrieve(thisID);
+	    	String starttime = thisTiming.getStarttime();
+	    	String difference = "";
+	    	try{
+		    	Date start = sdf.parse(starttime);
+		    	Date end = sdf.parse(endtime);
+		    	
+		    	long diff = end.getTime() - start.getTime();
+		    	long diffSeconds = diff / 1000 % 60;
+				long diffMinutes = diff / (60 * 1000) % 60;
+				long diffHours = diff / (60 * 60 * 1000) % 24;
+				difference = diffHours + " Hours, " + diffMinutes + "Mins, " + diffSeconds + "Secs"; 
+				
+	    	} catch(Exception ex){
+	    		ex.printStackTrace();
+	    	}
+	    	thisTiming.setEndtime(endtime);
+	    	thisTiming.setTimeTaken(difference);
+	    	TimingDAO.update(thisTiming);
+        } catch(Exception ex){}
+        RequestDispatcher dispatcher = request.getRequestDispatcher("./index.jsp"); 
 		dispatcher.forward(request,response);
     }
 

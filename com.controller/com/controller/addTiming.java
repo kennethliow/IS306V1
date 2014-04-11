@@ -28,9 +28,16 @@ public class addTiming extends HttpServlet {
     	String starttime = sdf.format(cal.getTime());
     	
     	Query<Timing> timingList =  TimingDAO.retrieveAll();
-    	long idCount = timingList.count() + 1;
-    	TimingDAO.add(new Timing(idCount, starttime ,""));
-    	request.getSession().setAttribute("id", idCount);
+    	long largeid = 0;
+    	for(Timing thisTiming : timingList){
+    		long aTiming = thisTiming.getId();
+    		if (aTiming >largeid){
+    			largeid = aTiming;
+    		}
+    	}
+    	largeid+=1;
+    	TimingDAO.add(new Timing(largeid, starttime ,""));
+    	request.getSession().setAttribute("id", largeid);
     	
     	RequestDispatcher dispatcher = request.getRequestDispatcher("./volunteer.jsp"); 
 		dispatcher.forward(request,response);
